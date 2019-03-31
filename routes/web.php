@@ -81,7 +81,7 @@ Route::group(['middleware' => ['auth', 'locale'], 'prefix' => 'admin', 'namespac
     Route::resource('doctor', 'DoctorController');
     Route::get('/delDoctor/{id}', 'DoctorController@delDoctor');
     /*Durgs=======*/
-    Route::resource('drugs', 'DrugsControllerDrugsController');
+    Route::resource('drugs', 'DrugsController');
     Route::get('/delDrugs/{id}', 'DrugsController@delDrugs');
     /*Doctor Analyzes=======*/
     Route::resource('doctorAnalyzes', 'DoctorAnalyzesController');
@@ -132,6 +132,8 @@ Route::group(['namespace' => 'Site'], function () {
     Route::get('/signUp', 'UserController@signUp');
     Route::any('/doctorDashboard', 'UserController@doctorDashboard');
     Route::any('/doctorProfile', 'UserController@doctorProfile');
+    Route::any('/editProfile/{id}', 'UserController@show');
+    Route::post('/docProfile/{id}', 'UserController@update');
 
     //User Reigster
     Route::post('/usersave', 'UserController@store');
@@ -142,8 +144,9 @@ Route::group(['namespace' => 'Site'], function () {
 
     //search
     Route::any('/search', 'IndexController@search');
+    Route::post('/search_states', 'IndexController@search_states')->name('search_states_');
 
-    Route::post('/logout', 'UserController@logout');
+    Route::get('/logoutuser', 'UserController@userlogout');
 
     Route::resource('/drugs', 'DrugsController');
     Route::resource('/analyzes', 'AnalyzesController');
@@ -151,11 +154,32 @@ Route::group(['namespace' => 'Site'], function () {
     Route::resource('/processes', 'ProcessesController');
 
     Route::resource('/patients', 'PatientController');
+    Route::get('/viewpatients/{id}', 'PatientController@index');
+    Route::get('/addpatients', 'PatientController@create');
+    Route::post('/storepatient', 'PatientController@store');
     Route::post('patientupdate/{id}', 'PatientController@updatepatient');
 
 
     Route::get('/history/{id}', 'PatientController@history');
+    Route::get('/addhistory/{id}', 'PatientController@addhistory');
+    Route::post('/storehistory/{id}', 'PatientController@storehistory');
 
     Route::resource('/reservations','ReservationsController');
+    Route::get('/addreservation','ReservationsController@create');
+    Route::post('updatereser/{id}', 'ReservationsController@update');
+    Route::post('savereser', 'ReservationsController@store');
+
+    Route::get('/Rotchta/{id}','RochtaController@index');
+    Route::get('/Rotchtapatient/{id}','RochtaController@show');
+    Route::get('/addrochta/{id}','RochtaController@addrochta');
+    Route::post('/storerochta/{id}','RochtaController@storerochta');
+
+
+    Route::get('addpatientrochta/{id}','RochtaController@addpatientrochta');
+    Route::post('storerochtadata/{id}','RochtaController@storerochtadata');
+    Route::get('viewrochta/{id}','RochtaController@viewrochta');
+
+    Route::post('customsearch','IndexController@customsearch');
+
 
 });

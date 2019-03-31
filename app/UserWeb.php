@@ -14,7 +14,9 @@ class UserWeb extends Authenticatable {
     protected $table = 'users-web';
     protected $guard = 'users-web';
 
-    protected $fillable = ['name', 'age', 'email', 'phone', 'password'];
+    protected $fillable = ['name', 'age', 'email', 'phone', 'password','serialNo','cityId',
+        'stateId','quarterId','gender'
+        ];
 
     protected $hidden = ['password', 'remember_token'];
 
@@ -53,6 +55,9 @@ class UserWeb extends Authenticatable {
         return $this->hasMany('PatientHistroy');
     }
 
+    public function rochta(){
+        return $this->hasMany('rochta');
+    }
 
 
 }

@@ -52,10 +52,11 @@
                   </form>
                 </div>
                 <!-- sign up form -->
-                <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> مستخدم جديد ؟ <a href="{{ action('Site\UserController@signUp')}}"> سجل من هنا</a></div>
+                <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> مستخدم جديد ؟
+                  <a href="{{ action('Site\UserController@signUp')}}"> سجل من هنا</a></div>
                 <!-- sign up form end-->
 
-
+              </a>
             </div>
           </div>
         </div>

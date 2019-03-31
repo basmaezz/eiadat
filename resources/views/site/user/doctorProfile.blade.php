@@ -63,7 +63,11 @@ $title_id = $nameArr2[Lang::getLocale()];
                     <a href="#." class="btn apply"><i class="fa fa-paper-plane" aria-hidden="true"></i>  احجز الان</a>
                     <a href="#." class="btn"><i class="fa fa-envelope" aria-hidden="true"></i> ارسل رساله </a>
                     <a href="#." class="btn"><i class="fa fa-floppy-o" aria-hidden="true"></i>  تقيم الدكتور</a>
-                    <a href="#." class="btn report"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ابلغ عن دكتور</a> </div>
+                    <a href="#." class="btn report"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ابلغ عن دكتور</a>
+
+                    <a href="{{url('/editProfile/'.auth()->guard('users-web')->user()->id)}}" class="btn report"><i class="fa fa-warning" aria-hidden="true"></i>Update Profile</a>
+
+                </div>
             </div>
 
             <!-- Job Detail start -->

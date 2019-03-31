@@ -3,8 +3,19 @@
 
     <?php $locale =  App::getLocale();    ?>
 
+    <?php
+    $nameArr = json_decode($allDoctor->special_id->name , true);
+    $Specail = $nameArr[Lang::getLocale()];
 
+    $nameArr2 = json_decode($allDoctor->title_id->name , true);
+    $title_id = $nameArr2[Lang::getLocale()];
+    dd($title_id);
 
+    ?>
+
+    @foreach($docData as $doc)
+       {{$doc->clinicService}}
+        @endforeach
 
     <!-- Page Title start -->
     <div class="pageTitle">
@@ -79,11 +90,11 @@
               <li>
                 <input type="checkbox" name="checkname" id="webdesigner" />
                 <label for="webdesigner"></label>
-                ذكر  <span>12</span> </li>
+                ذكر  <span></span> </li>
               <li>
                 <input type="checkbox" name="checkname" id="3dgraphic" />
                 <label for="3dgraphic"></label>
-                انثى   <span>33</span> </li>
+                انثى   <span></span> </li>
             
             </ul>
             </div>
@@ -91,24 +102,26 @@
             
              <div class="widget">
             <h4 class="widget-title">اللقب  </h4>
-            <ul class="optionlist">
+
+
+                 <ul class="optionlist">
               <li>
                 <input type="checkbox" name="checkname" id="webdesigner" />
                 <label for="webdesigner"></label>
-                استاذ  <span>12</span> </li>
+                  استاذ  <span class="glyphicon glyphicon-user"></span> </li>
               <li>
                 <input type="checkbox" name="checkname" id="3dgraphic" />
                 <label for="3dgraphic"></label>
-                استشارى   <span>33</span> </li>
+                استشارى   <span></span> </li>
             <li>
                 <input type="checkbox" name="checkname" id="3dgraphic" />
                 <label for="3dgraphic"></label>
-                مدرس    <span>33</span> </li>
+                مدرس    <span></span> </li>
                 
                 <li>
                 <input type="checkbox" name="checkname" id="3dgraphic" />
                 <label for="3dgraphic"></label>
-                اخصائى   <span>33</span> </li
+                اخصائى   <span></span> </li>
             
             
             </ul>
@@ -178,7 +191,14 @@
                                     <div class="jobinfo">
                                         <h3><a href="{{ action('Site\UserController@doctorProfile') }}">{{ $doctor->name }}</a></h3>
                                         <div class="companyName"><a href="#.">Datebase Management Company</a></div>
+
+
+                                        <div class="location"><label class="fulltime">التخصص</label>   - <span>
+
+                                            </span></div>
                                         <div class="location"><label class="fulltime">التخصص</label>   - <span>الدرجه العلميه</span></div>
+                                        <div class="desi"><?php echo (($Specail). "  -  " .($title_id)) ?> </div>
+
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>

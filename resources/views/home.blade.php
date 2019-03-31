@@ -105,12 +105,12 @@
                                         <div class="desc">
                                             
 
-                                        {{$data->Patient->name}}
+                                        {{@$data->Patient->name}}
 
                                         </div>
                                         <span class="label label-sm label-warning ">
                                                  <i class="fa fa-map-marker"></i>
-                                                {{ $data->Doctor->name }}
+                                                {{ @$data->Doctor->name }}
                                                 </span>
 
                                     </div>

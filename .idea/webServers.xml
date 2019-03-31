@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="409fa07a-3260-4c9a-a0cf-b71ac5e47ed8" name="eiadat" url="demo.eiadat.com">
+      <webServer id="c06ff848-696b-4b30-abec-f7f41cbfd935" name="basma" url="demo.eiadat.com">
         <fileTransfer host="demo.eiadat.com" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />

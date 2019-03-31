@@ -69,6 +69,7 @@ return [
     'clinicImage' => ' Clinic Image',
     'Doctor No' => ' Doctor No',
     'History Patients' => ' History Patients',
+    'rochta' => ' Patient Rochta',
     'Doctor Name' => ' Doctor Name',
     'Patient Name' => ' Patient Name',
     'Resrvation Type' => 'Resrvation Type',
