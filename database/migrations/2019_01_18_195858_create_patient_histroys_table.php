@@ -25,6 +25,7 @@ class CreatePatientHistroysTable extends Migration
             $table->text('radiationImg');
             $table->text('drugs');
             $table->text('processes');
+            $table->text('notes');
             $table->timestamps();
         });
     }

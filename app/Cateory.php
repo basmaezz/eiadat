@@ -9,4 +9,7 @@ class Cateory extends Model
     //
     //
     protected $table =  'cateories';
+   /* protected $casts = [
+        'name'=>'array',
+    ];*/
 }

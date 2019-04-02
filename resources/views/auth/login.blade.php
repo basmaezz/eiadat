@@ -59,7 +59,7 @@
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     هل نسيت كلمه المرور?
                                 </a>
-                                
+
                                 <!--a class="btn btn-link" href="{{ route('register') }}">
                                     Create an account
                                 </a-->
@@ -67,7 +67,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     تسجيل الدخول
                                 </button>
-                                
+
                             </div>
                         </div>
                     </form>

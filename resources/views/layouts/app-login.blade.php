@@ -176,7 +176,7 @@
             <span id="reauth-email" class="reauth-email"></span>
 
 
-            <input id="inputEmail" type="email" class="form-control" name="email" placeholder="البريد الالكترونى " value="{{ old('email') }}" required autofocus>
+            <input id="inputEmail" type="email" class="form-control" name="email" placeholder="البريد الالكترونى " value="" required autofocus>
             @if ($errors->has('email'))
                 <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>

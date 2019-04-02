@@ -21,10 +21,7 @@
                 </div>
             </div>
 
-
             <div class="timeline">
-
-
 
         @if(count($historyData) > 0)
             @foreach($historyData as $data)
@@ -70,8 +67,6 @@
                                                     @endforeach
                                                 </tr>
 
-
-
                                                 <?php $analyzes = explode( ',' , $data->analyzes); ?>
                                                 <tr >
                                                     <th> @lang('admin.Analyzes') </th>
@@ -79,8 +74,6 @@
                                                     <td class="success"> {{ $x }} </td>
                                                      @endforeach
                                                 </tr>
-
-
                                                 <?php $radiation = explode( ',' , $data->radiation); ?>
                                                 <tr >
                                                     <th> @lang('admin.Radiation') </th>
@@ -88,8 +81,6 @@
                                                     <td class="warning"> {{ $x }} </td>
                                                      @endforeach
                                                 </tr>
-
-
 
                                                 <?php $processes = explode( ',' , $data->processes); ?>
                                                 <tr >
@@ -99,15 +90,8 @@
                                                      @endforeach
                                                 </tr>
 
-
-
-
-
                                             </tbody>
                                         </table>
-
-
-
 
                             </div>
                         </div>

@@ -23,6 +23,7 @@ use App\Users;
 
 
 
+
 class IndexController extends Controller
 {
     //
@@ -41,51 +42,54 @@ class IndexController extends Controller
 
     public function index()
     {
-       
-       $allCity = City::all();
+
+        $allCity = City::all();
         $allCateory = Cateory::all();
-         foreach ($allCateory as $data)
-            {
-                $nameArr = json_decode($data->name , true);
-                $data->name = $nameArr[Lang::getLocale()];
-                
-                $docotData = Doctors::where('specialId' , $data->id)->get();
-                $data->countDr = count($docotData);
+        foreach ($allCateory as $data)
+        {
+            $nameArr = json_decode($data->name , true);
+            $data->name = $nameArr[Lang::getLocale()];
 
-            }
-            
-        $lastDr =   UserWeb::where('type' , 1)->take(16)->get();  
+            $docotData = Doctors::where('specialId' , $data->id)->get();
+            $data->countDr = count($docotData);
+
+        }
+
+        $lastDr =   UserWeb::where('type' , 1)->take(16)->get();
         foreach ($lastDr as $data)
-            {
-                
-                
-                $docotData = Doctors::where('userId' , $data->id)->first();
-//                $data->image = $docotData->doctorImage;
+        {
 
-            }
-        
-         $allBlog = News::take(6)->get();
-            foreach ($allBlog  as $data)
-            {
-                $nameArr1 = json_decode($data->name , true);
-                $data->name = $nameArr1[Lang::getLocale()];
 
-            }
-            
-            $indexPage = Pages::take(3)->get();
-            foreach ($indexPage  as $data)
-            {
-                $nameArrx = json_decode($data->name , true);
-                $data->name = $nameArrx[Lang::getLocale()];
-                
-                 $tittleArr = json_decode($data->tittle, true);
-                $data->tittle = $tittleArr[Lang::getLocale()];
+            $docotData = Doctors::where('userId' , $data->id)->first();
+//            $data->image = $docotData->doctorImage;
 
-            }
-            
-            $allCity1 = City::take(21)->get();
-        return view('site.web.index')->with(['allCity' => $allCity , 'indexPage' => $indexPage , 
-        'allCity1' => $allCity1 , 'allCateory' => $allCateory , 'lastDr' => $lastDr  , 'allBlog' => $allBlog]);
+        }
+
+        $allBlog = News::take(6)->get();
+        foreach ($allBlog  as $data)
+        {
+            $nameArr1 = json_decode($data->name , true);
+            $data->name = $nameArr1[Lang::getLocale()];
+
+        }
+
+        $indexPage = Pages::take(3)->get();
+        foreach ($indexPage  as $data)
+        {
+            $nameArrx = json_decode($data->name , true);
+            $data->name = $nameArrx[Lang::getLocale()];
+
+            $tittleArr = json_decode($data->tittle, true);
+            $data->tittle = $tittleArr[Lang::getLocale()];
+
+        }
+
+        $allCity1 = City::take(21)->get();
+//        dd($allCity1);
+        $allCityState = CityState::all();
+//        dd($allCityState);
+        return view('site.web.index')->with(['allCity' => $allCity , 'indexPage' => $indexPage ,'allCityState' => $allCityState,
+            'allCity1' => $allCity1 , 'allCateory' => $allCateory , 'lastDr' => $lastDr  , 'allBlog' => $allBlog]);
     }
 
 
@@ -100,9 +104,9 @@ class IndexController extends Controller
         $onePage->content = $contentArr[Lang::getLocale()];
         return view('site.web.page')->with([ 'onePage' => $onePage]);
     }
-    
-    
-    
+
+
+
     public function blogs()
     {
         $blogs = News::paginate(9);
@@ -113,30 +117,30 @@ class IndexController extends Controller
             $tittleArr = json_decode($data->tittle, true);
             $data->tittle = $tittleArr[Lang::getLocale()];
         }
-         $allCateory = Cateory::all();
-         foreach ($allCateory as $data)
-            {
-                $nameArr = json_decode($data->name , true);
-                $data->name = $nameArr[Lang::getLocale()];
-                
-                $docotData = Doctors::where('specialId' , $data->id)->get();
-                $data->countDr = count($docotData);
+        $allCateory = Cateory::all();
+        foreach ($allCateory as $data)
+        {
+            $nameArr = json_decode($data->name , true);
+            $data->name = $nameArr[Lang::getLocale()];
 
-            }
-            
-             $allBlogs = News::orderBy('id' , 'DESC')->take(4)->get();
+            $docotData = Doctors::where('specialId' , $data->id)->get();
+            $data->countDr = count($docotData);
+
+        }
+
+        $allBlogs = News::orderBy('id' , 'DESC')->take(4)->get();
         foreach ($allBlogs as $data) {
             $nameArr1 = json_decode($data->name, true);
             $data->name = $nameArr1[Lang::getLocale()];
 
-        
+
         }
-        
-        
+
+
         return view('site.web.blogs')->with(['blogs' => $blogs , 'allCateory' => $allCateory , 'allBlogs' => $allBlogs]);
     }
-    
-     public function blog($id)
+
+    public function blog($id)
     {
         $blog = News::find($id);
         $nameArr = json_decode($blog->name, true);
@@ -155,60 +159,79 @@ class IndexController extends Controller
             $data->tittle = $tittleArr1[Lang::getLocale()];
         }
         //
-         $allCateory = Cateory::take(5)->get();
-         foreach ($allCateory as $data)
-            {
-                $nameArr = json_decode($data->name , true);
-                $data->name = $nameArr[Lang::getLocale()];
-                
-            }
+        $allCateory = Cateory::take(5)->get();
+        foreach ($allCateory as $data)
+        {
+            $nameArr = json_decode($data->name , true);
+            $data->name = $nameArr[Lang::getLocale()];
+
+        }
 
         return view('site.web.blog')->with(['blog' => $blog , 'allBlogs' => $allBlogs , 'allCateory' => $allCateory ,]);
 
     }
 
-    
 
- public function book()
+
+    public function book()
     {
-         $allCateory = Cateory::all();
-         foreach ($allCateory as $data)
-            {
-                $nameArr = json_decode($data->name , true);
-                $data->name = $nameArr[Lang::getLocale()];
-                
+        $allCateory = Cateory::all();
+        foreach ($allCateory as $data)
+        {
+            $nameArr = json_decode($data->name , true);
+            $data->name = $nameArr[Lang::getLocale()];
 
-            }
+
+        }
         return view('site.web.book')->with([ 'allCateory' => $allCateory ]);
     }
-    
-    
+
+
     public function search(Request $request)
     {
-         $allCity = City::all();
-         $allCateory = Cateory::all();
-         foreach ($allCateory as $data)
-            {
-                $nameArr = json_decode($data->name , true);
-                $data->name = $nameArr[Lang::getLocale()];
-                
+        $allCity = City::all();
+        $allCateory = Cateory::all();
+        foreach ($allCateory as $data)
+        {
+            $nameArr = json_decode($data->name , true);
+//            dd($nameArr);
+            $data->name = $nameArr[Lang::getLocale()];
+        }
 
+        $allDoctor = UserWeb::where('type' , 1)->paginate(5);
+//        dd($allDoctor);
+        foreach($allDoctor as &$doc)
+        {
+            $docData = Doctors::WhereIn('userId' , [$doc->id])->with('Special')->first();
+            $doc->data = $docData;
+        // echo($docData);
+         //dd($docData);
+            //            $doc->imageName = $docData->doctorImage;
+//            dd($docData);
+//            foreach ($docData as $r) {
+//            echo($r->Special->id);
+//            die();
+//                foreach ($r->Special as $spec)
+//                    {
+////                        dd($spec->id);
+//                    }
+//                }
             }
-            
-            $allDoctor = UserWeb::where('type' , 1)->paginate(10);
-            foreach($allDoctor as $doc)
-            {
-                $docData = Doctors::where('userId' , $doc->id)->first();
-                $doc->imageName = $docData->doctorImage;
-            }
-           // var_dump($allDoctor); die;
-        return view('site.web.search')->with([ 'allCateory' => $allCateory ,   'allCity' => $allCity ,   'allDoctor' => $allDoctor]);
+
+        return view('site.web.search')->with([ 'allCateory' => $allCateory ,   'allCity' => $allCity ,
+            'allDoctor' => $allDoctor]);
     }
-   
 
-   
-   
-   /*=====contactUs ===========================================*/
+
+    public function customsearch(){
+
+        $docname= UserWeb::where('type' , 1);
+    }
+
+
+
+
+    /*=====contactUs ===========================================*/
     public function contactUs()
     {
         return view('site.web.contactUs');

@@ -56,6 +56,14 @@
                                                             <input type="text" class="form-control" name="name" id="drugname" required value="{{old('drugname')}}">
                                                         </div>
                                                     </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 " for="usages" >اسم الدواء</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" name="usages" id="usages" required value="">
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-info" data-dismiss="modal">الغاء الامر</button>

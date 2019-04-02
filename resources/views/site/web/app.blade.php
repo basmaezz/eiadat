@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="rtl" dir="rtl">
+<?php  $locale = App::getLocale();  ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <!-- CSRF Token -->
+    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $setting->siteName }} | @yield('pageTitle')</title>
     <!-- Fav Icon -->
@@ -23,6 +24,61 @@
     <link href="{{ URL ::to ('assets/site/css/main.css')}}" rel="stylesheet">
     <link href="{{ URL ::to ('assets/site/css/rtl-style.css')}}" rel="stylesheet">
 
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/simple-line-icons/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css" />
+
+    @if($locale =='ar')
+        <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap/css/bootstrap-rtl.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-switch/css/bootstrap-switch-rtl.min.css')}}" rel="stylesheet" type="text/css" />
+    @else
+        <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css')}}" rel="stylesheet" type="text/css" />
+
+@endif
+
+    <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/select2/css/select2-bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/clockface/css/clockface.css')}}" rel="stylesheet" type="text/css" />
+
+
+    <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/morris/morris.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/fullcalendar/fullcalendar.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jqvmap/jqvmap/jqvmap.css')}}" rel="stylesheet" type="text/css" />
+
+
+    <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css')}}" rel="stylesheet" type="text/css" />
+
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    @if($locale =='ar')
+        <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/css/components-rtl.min.css')}}" rel="stylesheet" id="style_components" type="text/css" />
+        {{--<link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/css/plugins-rtl.min.css')}}" rel="stylesheet" type="text/css" />--}}
+    @else
+        {{--<link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/css/components.min.css')}}" rel="stylesheet" id="style_components" type="text/css" />--}}
+        {{--<link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/css/plugins.min.css')}}" rel="stylesheet" type="text/css" />--}}
+        <!-- END THEME GLOBAL STYLES -->
+@endif
+
+    @if($locale =='ar')
+        {{--<link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/css/layout-rtl.min.css')}}" rel="stylesheet" type="text/css" />--}}
+        {{--<link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/css/themes/darkblue-rtl.min.css')}}" rel="stylesheet" type="text/css" id="style_color" />--}}
+        {{--<link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/css/custom-rtl.min.css')}}" rel="stylesheet" type="text/css" />--}}
+    @elseif($locale =='en')
+
+        {{--<link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/css/layout.min.css')}}" rel="stylesheet" type="text/css" />--}}
+        {{--<link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/css/themes/darkblue.min.css')}}" rel="stylesheet" type="text/css" id="style_color" />--}}
+        {{--<link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/css/custom.min.css')}}" rel="stylesheet" type="text/css" />--}}
+    @endif
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="js/html5shiv.min.js"></script>
@@ -32,74 +88,74 @@
 </head>
 <style>
     .icons-bar {
-  position: fixed;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
+        position: fixed;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
 
-.icons-bar a {
-  display: block;
-  text-align: center;
-  padding: 16px;
-  transition: all 0.3s ease;
-  color: white;
-  font-size: 20px;
-}
+    .icons-bar a {
+        display: block;
+        text-align: center;
+        padding: 16px;
+        transition: all 0.3s ease;
+        color: white;
+        font-size: 20px;
+    }
 
-.icons-bar a:hover {
-  background-color: #000;
-}
-
-
-.whatsapp {
-  background: #25d366;
-  color: white;
-}
+    .icons-bar a:hover {
+        background-color: #000;
+    }
 
 
-.facebook {
-  background: #3B5998;
-  color: white;
-}
-
-.twitter {
-  background: #55ACEE;
-  color: white;
-}
-
-.google {
-  background: #dd4b39;
-  color: white;
-}
-
-.linkedin {
-  background: #007bb5;
-  color: white;
-}
-
-.youtube {
-  background: #bb0000;
-  color: white;
-}
+    .whatsapp {
+        background: #25d366;
+        color: white;
+    }
 
 
-.phone {
-  background: #cccccc;
-  color: white;
-}
+    .facebook {
+        background: #3B5998;
+        color: white;
+    }
+
+    .twitter {
+        background: #55ACEE;
+        color: white;
+    }
+
+    .google {
+        background: #dd4b39;
+        color: white;
+    }
+
+    .linkedin {
+        background: #007bb5;
+        color: white;
+    }
+
+    .youtube {
+        background: #bb0000;
+        color: white;
+    }
+
+
+    .phone {
+        background: #cccccc;
+        color: white;
+    }
 
 </style>
 <body>
-    
+
 <div class="icons-bar hidden-xs">
-  <a href="https://api.whatsapp.com/send?phone={{ $setting->phone }}" class="whatsapp" target="_blank"><i class="fa fa-whatsapp"></i></a>
-  <a href="https://api.whatsapp.com/send?phone={{ $setting->phone }}" class="phone" target="_blank"><i class="fa fa-phone"></i></a>
-  
-   @foreach($social as $seo)
-  <a href="{{$seo->link}}" class="{{$seo->name}}" target="_blank"><i class="{{$seo->icon}}"></i></a> 
-  @endforeach
+    <a href="https://api.whatsapp.com/send?phone={{ $setting->phone }}" class="whatsapp" target="_blank"><i class="fa fa-whatsapp"></i></a>
+    <a href="https://api.whatsapp.com/send?phone={{ $setting->phone }}" class="phone" target="_blank"><i class="fa fa-phone"></i></a>
+
+    @foreach($social as $seo)
+        <a href="{{$seo->link}}" class="{{$seo->name}}" target="_blank"><i class="{{$seo->icon}}"></i></a>
+    @endforeach
 </div>
 
 
@@ -124,10 +180,10 @@
                             <li class="dropdown {{ Request::is(' ') ? 'active' : '' }}">
                                 <a href="{{ action('Site\IndexController@index') }}">الرئيسيه </a>
                             </li>
-                            
+
                             @foreach($headerPages as $head)
-                             <?php $nameHead = json_decode($head->name , true); ?>
-                            <li class="{{ Request::is('page*') ? 'active' : '' }}"><a href="{{ action('Site\IndexController@page' , $head->id ) }}"> {{ $nameHead [Lang::getLocale()] }} </a></li>
+                                <?php $nameHead = json_decode($head->name , true); ?>
+                                <li class="{{ Request::is('page*') ? 'active' : '' }}"><a href="{{ action('Site\IndexController@page' , $head->id ) }}"> {{ $nameHead [Lang::getLocale()] }} </a></li>
                             @endforeach
 
                             <li class="{{ Request::is('blogs') ? 'active' : '' }}"><a href="{{ action('Site\IndexController@blogs') }}">نصائح طبيه </a>
@@ -165,91 +221,91 @@
     <div class="container">
         <div class="row">
             <!--About Us-->
-            
 
-            
+
+
 
             <!--Jobs By Industry-->
             <div class="col-md-3 col-sm-6">
                 <h5>التخصصات</h5>
-                
+
 
                 <!--Industry menu Start-->
                 <ul class="quicklinks">
-                
-                @foreach($footerCateory as $cat)
-                <?php $nameArr1 = json_decode($cat->name , true); ?>
-                    <li class="col-md-6 col-sm-6"><a href="#.">{{ $nameArr1[Lang::getLocale()] }}</a></li>
+
+                    @foreach($footerCateory as $cat)
+                        <?php $nameArr1 = json_decode($cat->name , true); ?>
+                        <li class="col-md-6 col-sm-6"><a href="#.">{{ $nameArr1[Lang::getLocale()] }}</a></li>
                     @endforeach
-                   
+
                 </ul>
                 <!--Industry menu End-->
                 <div class="clear"></div>
             </div>
-            
-            
-            
+
+
+
             <!--Jobs By Industry-->
             <div class="col-md-3 col-sm-6">
                 <h5>المناطق</h5>
                 <!--Industry menu Start-->
                 <ul class="quicklinks">
-                
-                @foreach($allCityFooter as $city)
-                    <li class="col-md-6 col-sm-6"><a href="#.">{{ $city->city_ar  }}</a></li>
+
+                    @foreach($allCityFooter as $city)
+                        <li class="col-md-6 col-sm-6"><a href="#.">{{ $city->city_ar  }}</a></li>
                     @endforeach
-                   
+
                 </ul>
                 <!--Industry menu End-->
                 <div class="clear"></div>
             </div>
-            
-            
-            
-            
+
+
+
+
             <!--Quick Links-->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <h5>روابط سريعه</h5>
                 <!--Quick Links menu Start-->
                 <ul class="quicklinks">
-                
-                @foreach($footerPage as $page)
-                <?php $nameArr = json_decode($page->name , true); ?>
-                    <li><a href="{{ action('Site\IndexController@page' , $page->id ) }}">{{ $nameArr[Lang::getLocale()] }}</a></li>
+
+                    @foreach($footerPage as $page)
+                        <?php $nameArr = json_decode($page->name , true); ?>
+                        <li><a href="{{ action('Site\IndexController@page' , $page->id ) }}">{{ $nameArr[Lang::getLocale()] }}</a></li>
                     @endforeach
-                   
+
                 </ul>
             </div>
             <!--Quick Links menu end-->
-            
-            
-            
+
+
+
             <div class="col-md-3 col-sm-12">
                 <div class="ft-logo"><img src="{{ URL ::to ('public/images/'.$setting->logo)}}" alt="Your alt text here"></div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
                 <div class="social">
-                @foreach($social as $seo)
-                 <a href="{{ $seo->link}}" target="_blank"> <i class="{{ $seo->icon}}" aria-hidden="true"></i></a>
-                 @endforeach
+                    @foreach($social as $seo)
+                        <a href="{{ $seo->link}}" target="_blank"> <i class="{{ $seo->icon}}" aria-hidden="true"></i></a>
+                    @endforeach
                 </div>
             </div>
             <!--About us End-->
-            
-            
+
+
 
             <!--Latest Articles-->
-            <!--div class="col-md-4 col-sm-12">
+        <!--div class="col-md-4 col-sm-12">
                 <h5>اخر المقالات</h5>
                 <ul class="posts-list">
-                
+
                 @foreach($footerBlog as $blog)
-                <?php $nameArrx = json_decode($blog->name , true); ?>
+            <?php $nameArrx = json_decode($blog->name , true); ?>
                     <!--Article 1-->
-                    <!--li>
+            <!--li>
                         <article class="post post-list">
                             <div class="entry-content media">
-                                <div class="media-left"> 
-                                <a href="#." title="" class="entry-image"> 
+                                <div class="media-left">
+                                <a href="#." title="" class="entry-image">
                                 <img width="80" height="80" src="{{ URL ::to ('public/images/'.$blog->imageName)}}" alt="Your alt text here"> </a> </div>
                                 <div class="media-body">
                                     <h4 class="entry-title"> <a href="#.">{{ $nameArrx [Lang::getLocale()] }}</a> </h4>
@@ -261,22 +317,22 @@
                         </article>
                     </li>
                     <!--Article end 1-->
-                    @endforeach
+                @endforeach
 
-                   
+
 
                 </ul>
-            </div>
         </div>
     </div>
+</div>
 </div>
 <!--Footer end-->
 
 <!--Copyright-->
 <div class="copyright">
     <div class="container">
-        <div class="bttxt"> جميع الحقوق محفوظه لشركه  
-       <a href="#" >emarkting-map.com</a></div>
+        <div class="bttxt"> جميع الحقوق محفوظه لشركه
+            <a href="#" >emarkting-map.com</a></div>
     </div>
 </div>
 
@@ -292,19 +348,96 @@
 
 <script src="{{ URL ::to ('assets/admin/custom.js')}}"></script>
 
+
+<!-- BEGIN CORE PLUGINS -->
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jquery.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/js.cookie.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jquery.blockui.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/moment.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js')}}" type="text/javascript"></script>
+
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/clockface/js/clockface.js')}}" type="text/javascript"></script>
+
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/morris/morris.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/morris/raphael-min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/counterup/jquery.waypoints.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/counterup/jquery.counterup.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/amcharts/amcharts.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/amcharts/serial.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/amcharts/pie.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/amcharts/radar.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/amcharts/themes/light.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/amcharts/themes/patterns.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/amcharts/themes/chalk.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/ammap/ammap.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/ammap/maps/js/worldLow.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/amstockcharts/amstock.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/fullcalendar/fullcalendar.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/horizontal-timeline/horozontal-timeline.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/flot/jquery.flot.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/flot/jquery.flot.resize.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/flot/jquery.flot.categories.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jquery.sparkline.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js')}}" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/select2/js/select2.full.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/scripts/datatable.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/datatables/datatables.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/ckeditor/ckeditor.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/select2/js/select2.full.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js')}}" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/scripts/app.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/pages/scripts/table-datatables-managed.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/pages/scripts/components-select2.min.js')}}" type="text/javascript"></script>
+<!-- END THEME GLOBAL SCRIPTS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/pages/scripts/dashboard.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/pages/scripts/components-select2.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/pages/scripts/components-date-time-pickers.min.js')}}" type="text/javascript"></script>
+
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/scripts/layout.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/scripts/demo.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/global/scripts/quick-sidebar.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/'.$locale.'/custom.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/custom.js')}}" type="text/javascript"></script>
+
+
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5c574b456cb1ff3c14caf4eb/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/5c574b456cb1ff3c14caf4eb/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
 </script>
 <!--End of Tawk.to Script-->
+@stack('js1')
 
 
 </body>

@@ -28,6 +28,8 @@ $(document).ready(function (e) {
         itemCount++;
     });
 
+
+
     /****City *****************************/
     $('.getCity').change(function () {
         var cityId = $(this).val();
@@ -35,8 +37,8 @@ $(document).ready(function (e) {
         var url = $(this).attr('data-url');
        // alert(CSRF_TOKEN);
         $.post(url, {cityId: cityId, _token: CSRF_TOKEN}, function (data) {
-            
-           // alert(data);
+
+           alert(data);
             $('#stateId').html(data);
 
         });

@@ -6,6 +6,7 @@
 
 
 
+
     <!-- Page Title start -->
     <div class="pageTitle">
         <div class="container">
@@ -79,11 +80,11 @@
               <li>
                 <input type="checkbox" name="checkname" id="webdesigner" />
                 <label for="webdesigner"></label>
-                ذكر  <span>12</span> </li>
+                ذكر  <span></span> </li>
               <li>
                 <input type="checkbox" name="checkname" id="3dgraphic" />
                 <label for="3dgraphic"></label>
-                انثى   <span>33</span> </li>
+                انثى   <span></span> </li>
             
             </ul>
             </div>
@@ -95,20 +96,20 @@
               <li>
                 <input type="checkbox" name="checkname" id="webdesigner" />
                 <label for="webdesigner"></label>
-                استاذ  <span>12</span> </li>
+                استاذ  <span class="glyphicon glyphicon-user"></span> </li>
               <li>
                 <input type="checkbox" name="checkname" id="3dgraphic" />
                 <label for="3dgraphic"></label>
-                استشارى   <span>33</span> </li>
+                استشارى   <span></span> </li>
             <li>
                 <input type="checkbox" name="checkname" id="3dgraphic" />
                 <label for="3dgraphic"></label>
-                مدرس    <span>33</span> </li>
+                مدرس    <span></span> </li>
                 
                 <li>
                 <input type="checkbox" name="checkname" id="3dgraphic" />
                 <label for="3dgraphic"></label>
-                اخصائى   <span>33</span> </li
+                اخصائى   <span></span> </li>
             
             
             </ul>
@@ -178,7 +179,11 @@
                                     <div class="jobinfo">
                                         <h3><a href="{{ action('Site\UserController@doctorProfile') }}">{{ $doctor->name }}</a></h3>
                                         <div class="companyName"><a href="#.">Datebase Management Company</a></div>
-                                        <div class="location"><label class="fulltime">التخصص</label>   - <span>الدرجه العلميه</span></div>
+
+                                        <div class="location"><label class="fulltime">@if(isset($doctor->data->Special) && !empty($doctor->data->Special)) {{json_decode($doctor->data->Special->name,true)[Lang::getLocale()]}} @endif
+                                            </label>
+                                            - <span>الدرجه العلميه</span></div>
+
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>

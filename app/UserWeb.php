@@ -6,6 +6,8 @@ namespace App;
 //use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+//use App\Doctors;
+
 
 class UserWeb extends Authenticatable {
 
@@ -14,14 +16,17 @@ class UserWeb extends Authenticatable {
     protected $table = 'users-web';
     protected $guard = 'users-web';
 
-    protected $fillable = ['name', 'age', 'email', 'phone', 'password'];
+    protected $fillable = ['name', 'age', 'email', 'phone', 'password','serialNo','cityId',
+        'stateId','quarterId','gender'
+        ];
 
     protected $hidden = ['password', 'remember_token'];
 
-    public function DrDetails() {
-        return $this->belongsTo('App\Doctor ', 'userId', 'id');
+//    public function DrDetails() {
+//        return $this->hasMany('App\Doctors ', 'userId', 'id');
+//
+//    }
 
-    }
 
     public function drugs() {
         return $this->hasMany('App\Drugs', 'doctorId', 'id');
@@ -53,6 +58,9 @@ class UserWeb extends Authenticatable {
         return $this->hasMany('PatientHistroy');
     }
 
+    public function rochta(){
+        return $this->hasMany('rochta');
+    }
 
 
 }

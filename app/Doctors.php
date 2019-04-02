@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Doctors extends Model
 {
     //
@@ -37,7 +38,9 @@ class Doctors extends Model
           return $this->hasmany('App\Drugs');
     }
 
-
+    public function users(){
+        return $this->belongsTo('App\UserWeb','id','userId');
+    }
 
 
 
