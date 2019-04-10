@@ -109,6 +109,9 @@
     }
 
 
+    .icons-bar a:hover {
+        background-color: #000;
+    }
     .whatsapp {
         background: #25d366;
         color: white;
@@ -130,16 +133,18 @@
         color: white;
     }
 
+
     .linkedin {
         background: #007bb5;
         color: white;
     }
 
+
+
     .youtube {
         background: #bb0000;
         color: white;
     }
-
 
     .phone {
         background: #cccccc;

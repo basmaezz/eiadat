@@ -144,7 +144,10 @@ Route::group(['namespace' => 'Site'], function () {
 
     //search
     Route::any('/search', 'IndexController@search');
+
 //    Route::post('/search_states', 'IndexController@search_states')->name('search_states_');
+
+    Route::post('/search_states', 'IndexController@search_states')->name('search_states_');
 
     Route::get('/logoutuser', 'UserController@userlogout');
 
@@ -181,5 +184,22 @@ Route::group(['namespace' => 'Site'], function () {
 
     Route::post('customsearch','IndexController@customsearch');
 
+    Route::get('drugsearch','DrugsController@search');
+
+
+    Route::get('/usersearch',function($text){
+//        $q = Input::get ( 'q' );
+        $user = \App\User::where('name','LIKE','%'.$text.'%')->get();
+//        $user = \App\User::all();
+
+        if(count($user) > 0)
+        dd($user);
+        else dd('No Details found. Try to search again !');
+    });
+
+
+//    Route::get('/drugsearc',function(){
+// dd('No Details found. Try to search again !');
+//    });
 
 });

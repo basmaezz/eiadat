@@ -38,7 +38,10 @@ $(document).ready(function (e) {
        // alert(CSRF_TOKEN);
         $.post(url, {cityId: cityId, _token: CSRF_TOKEN}, function (data) {
 
+
            alert(data);
+
+           // alert(data);
             $('#stateId').html(data);
 
         });

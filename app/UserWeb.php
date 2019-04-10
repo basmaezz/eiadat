@@ -62,5 +62,13 @@ class UserWeb extends Authenticatable {
         return $this->hasMany('rochta');
     }
 
+//    public function city_id(){
+//        return $this->hasOne('App\CityState','cityId','id');
+//    }
+//
+//    public function state_id(){
+//        return $this->hasOne('App\CityQuarter','id','stateId');
+//    }
+
 
 }

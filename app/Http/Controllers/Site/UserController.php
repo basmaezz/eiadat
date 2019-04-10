@@ -80,7 +80,8 @@ class UserController extends Controller
     {
         if(Auth::guard('users-web')->check())
         {
-            return view('site.user.doctorDashboard1');
+
+            return view('site.user.doctorDashboard');
         }
 //         Validate the form data
         $this->validate($request, [
@@ -129,10 +130,13 @@ class UserController extends Controller
 
         $editData = UserWeb::find($id);
         $docData = Doctors::where('userId' , $id)->first();
+//        dd($docData);
 
         $allCity = City::all();
 
 //    return  $docData;
+//        $allCity = City::all();
+//        return  $docData;
 
         return view('site.user.doctorProfile',[
             'editData'=> $editData  ,

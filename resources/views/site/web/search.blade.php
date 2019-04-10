@@ -3,10 +3,6 @@
 
     <?php $locale =  App::getLocale();    ?>
 
-
-
-
-
     <!-- Page Title start -->
     <div class="pageTitle">
         <div class="container">
@@ -92,11 +88,15 @@
             
              <div class="widget">
             <h4 class="widget-title">اللقب  </h4>
-            <ul class="optionlist">
+
+
+                 <ul class="optionlist">
               <li>
                 <input type="checkbox" name="checkname" id="webdesigner" />
                 <label for="webdesigner"></label>
                 استاذ  <span class="glyphicon glyphicon-user"></span> </li>
+
+                  {{--استاذ  <span class="glyphicon glyphicon-user"></span> </li>--}}
               <li>
                 <input type="checkbox" name="checkname" id="3dgraphic" />
                 <label for="3dgraphic"></label>
@@ -131,9 +131,6 @@
             </ul>
             </div>
 
-                       
-
-                        
             
                         <!-- button -->
                         <div class="searchnt">
@@ -171,6 +168,16 @@
                         
                         
                         @foreach($allDoctor as $doctor)
+
+                            @php
+                                $Specail ='';
+                                $title_id='';
+                                 if(isset($doctor->data->Specia) & !empty($doctor->data->Specia)){
+                                    $Specail =$doctor->data->Special->id;
+
+                                 }
+
+                            @endphp
                         <!-- job start -->
                         <li>
                             <div class="row">
@@ -180,9 +187,11 @@
                                         <h3><a href="{{ action('Site\UserController@doctorProfile') }}">{{ $doctor->name }}</a></h3>
                                         <div class="companyName"><a href="#.">Datebase Management Company</a></div>
 
+
                                         <div class="location"><label class="fulltime">@if(isset($doctor->data->Special) && !empty($doctor->data->Special)) {{json_decode($doctor->data->Special->name,true)[Lang::getLocale()]}} @endif
                                             </label>
-                                            - <span>الدرجه العلميه</span></div>
+                                            - <span>@if(isset($doctor->data->title_id) && !empty($doctor->data->title_id)) {{json_decode($doctor->data->title_id->name,true)[Lang::getLocale()]}} @endif</span></div>
+
 
                                     </div>
                                     <div class="clearfix"></div>
@@ -192,9 +201,15 @@
                                 </div>
                             </div>
                             <div class="candidateinfo" style="margin : 25px">
-                           <div class="loctext" style="padding : 5px"><i class="fa fa-history" aria-hidden="true"></i> Member Since, Aug 14, 2016</div>
-                           <div class="loctext" style="padding : 5px"><i class="fa fa-map-marker" aria-hidden="true"></i> 123 Boscobel Street, NW8 8PS</div>
-                           <div class="loctext" style="padding : 5px"><i class="fa fa-phone" aria-hidden="true"></i> (+1) 123.456.7890</div>
+                           <div class="loctext" style="padding : 5px"><i class="fa fa-history" aria-hidden="true"></i> Member Since,{{ date('F d, Y',strtotime($doctor->created_at)) }}</div>
+
+                           <div class="loctext" style="padding : 5px"><i class="fa fa-map-marker" aria-hidden="true"></i> @if(isset($doctor->data) && !empty($doctor->data)) {{$doctor->data->address}}
+                               @else {{"no data"}}
+                               @endif</div>
+                           <div class="loctext" style="padding : 5px"><i class="fa fa-phone" aria-hidden="true"></i>@if(isset($doctor->data) && !empty($doctor->data)) {{$doctor->data->hotline}}
+                               @else {{"no data"}}
+                               @endif</div>
+
                            <div class="loctext" style="padding : 5px"><i class="fa fa-envelope" aria-hidden="true"></i> info@mywebsite.com</div>
                            </div>
                         </li>

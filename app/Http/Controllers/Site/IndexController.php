@@ -200,12 +200,14 @@ class IndexController extends Controller
 
         $allDoctor = UserWeb::where('type' , 1)->paginate(5);
 //        dd($allDoctor);
-        foreach($allDoctor as &$doc)
+        foreach($allDoctor as $doc)
         {
-            $docData = Doctors::WhereIn('userId' , [$doc->id])->with('Special')->first();
+            $docData = Doctors::WhereIn('userId' , [$doc->id])->with('Special','title_id')->first();
+//            dd($docData);
+//            $docData = Doctors::WhereIn('userId' , [$doc->id])->with('title_id')->first();
             $doc->data = $docData;
-        // echo($docData);
-         //dd($docData);
+//            dd($doc->data );
+//         dd( $doc->data);
             //            $doc->imageName = $docData->doctorImage;
 //            dd($docData);
 //            foreach ($docData as $r) {
@@ -217,7 +219,7 @@ class IndexController extends Controller
 //                    }
 //                }
             }
-
+//dd($allDoctor);
         return view('site.web.search')->with([ 'allCateory' => $allCateory ,   'allCity' => $allCity ,
             'allDoctor' => $allDoctor]);
     }

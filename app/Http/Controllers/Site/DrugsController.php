@@ -82,6 +82,15 @@ class DrugsController extends Controller {
         return redirect()->back();
 
     }
+    public function search($text){
+//        dd('test');
+
+//        $drug = Drugs::all();
+
+        $drug =  Drugs:: where('name','LIKE','%'.$text.'%' );
+        dd($drug);
+
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -93,4 +102,6 @@ class DrugsController extends Controller {
         Drugs::where('doctorId',auth()->guard('users-web')->user()->id)->where('id',$id)->delete();
         return redirect()->back();
     }
+
+
 }
