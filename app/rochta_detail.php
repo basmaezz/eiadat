@@ -7,6 +7,7 @@ use App\Drugs;
 
 class rochta_detail extends Model
 {
+
     protected $table="rochta_details";
     protected $guarded = ['id'];
 

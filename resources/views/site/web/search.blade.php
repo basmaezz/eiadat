@@ -4,9 +4,12 @@
     <?php $locale =  App::getLocale();    ?>
 
     <!-- Page Title start -->
+    <form action="{{ action('Site\IndexController@search')}}" method="POST">
+        @csrf
     <div class="pageTitle">
         <div class="container">
             <div class="row">
+
                 <div class="col-md-6 col-sm-6">
                     <h1 class="page-heading">نتائج البحث </h1>
                 </div>
@@ -24,7 +27,7 @@
             <!-- Page Title start -->
             <div class="pageSearch">
                 <div class="row">
-                    <div class="col-md-3"><a href="#." class="btn"><i class="fa fa-search" aria-hidden="true"></i> بحث</a></div>
+                    <div class="col-md-3"><button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-search" aria-hidden="true"></i> بحث</button></div>
                     <div class="col-md-9">
                         <div class="searchform">
                             <div class="row">
@@ -39,21 +42,28 @@
                         @endforeach
                     </select>
                                 </div>
+
+
                                 <div class="col-md-3 col-sm-2">
-                                     <select class="form-control getCity" data-url="{{ action('Admin\CityController@getCity') }}">
-                        <option>اختر المحافظه </option>
-                        @foreach($allCity as $city)
-                        <option value="{{ $city->id }}">{{ $city->city_ar}}</option>
-                        @endforeach
-                        
-                    </select>
+                                    <select name="cityId" class="form-control getCity1" data-url="{{ route('getCity') }}">
+                                        <option>اختر المحافظه </option>
+                                        @foreach($allCity as $city)
+                                            <option value="{{ $city->id }}">{{ $city->city_ar}}</option>
+                                        @endforeach
+
+                                    </select>
                                 </div>
+
                                 <div class="col-md-2 col-sm-3">
-                                    <select class="form-control" id="stateId">
-                        <option>اختر المنطقه </option>
-                       <option> كل المناطق </option>
-                    </select>
+                                    <select name="stateId" class="form-control getSubCity" id="stateId" data-url="{{ route('getSubCity') }}">
+                                        <option>اختر المركز </option>
+
+                                        <option> كل المراكز </option>
+
+                                    </select>
                                 </div>
+
+
                                 <div class="col-md-1 col-sm-2">
                                     <button class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </div>
@@ -74,12 +84,12 @@
             <h4 class="widget-title">النوع </h4>
             <ul class="optionlist">
               <li>
-                <input type="checkbox" name="checkname" id="webdesigner" />
-                <label for="webdesigner"></label>
+                <input type="checkbox" name="gender[]" @if(!empty(request('gender')) && in_array(1,request('gender'))) checked @endif id="male" value="1" />
+                <label for="male"></label>
                 ذكر  <span></span> </li>
               <li>
-                <input type="checkbox" name="checkname" id="3dgraphic" />
-                <label for="3dgraphic"></label>
+                <input type="checkbox" name="gender[]" @if(!empty(request('gender')) && in_array(2,request('gender'))) checked @endif id="female" value="2"/>
+                <label for="female"></label>
                 انثى   <span></span> </li>
             
             </ul>
@@ -89,45 +99,47 @@
              <div class="widget">
             <h4 class="widget-title">اللقب  </h4>
 
-
                  <ul class="optionlist">
-              <li>
-                <input type="checkbox" name="checkname" id="webdesigner" />
-                <label for="webdesigner"></label>
-                استاذ  <span class="glyphicon glyphicon-user"></span> </li>
 
-                  {{--استاذ  <span class="glyphicon glyphicon-user"></span> </li>--}}
               <li>
-                <input type="checkbox" name="checkname" id="3dgraphic" />
-                <label for="3dgraphic"></label>
-                استشارى   <span></span> </li>
-            <li>
-                <input type="checkbox" name="checkname" id="3dgraphic" />
-                <label for="3dgraphic"></label>
-                مدرس    <span></span> </li>
+                <input type="checkbox" name="titleId[]" id="checkdr" value="استاذ"/>
+                <label for="checkdr"></label>
+                استاذ  <span ></span>
+              </li>
+              <li>
+
+                <input type="checkbox" name="titleId[]" id="checkprof" value="استشارى" />
+                <label for="checkprof"></label>
+                استشارى   <span ></span> </li>
+              <li>
+                <input type="checkbox" name="titleId[]" id="checkmester" value="مدرس" />
+                <label for="checkmester"></label>
+                مدرس    <span ></span>
+              </li>
                 
                 <li>
-                <input type="checkbox" name="checkname" id="3dgraphic" />
-                <label for="3dgraphic"></label>
-                اخصائى   <span></span> </li>
-            
-            
+                <input type="checkbox" name="titleId[]" id="checkdoc" value="اخصائى"/>
+                <label for="checkdoc"></label>
+                اخصائى   <span ></span>
+                </li>
+
             </ul>
             </div>
-            
-            
+                        
              <div class="widget">
             <h4 class="widget-title">سعر الكشف </h4>
             <ul class="optionlist">
               <li>
-                <input type="checkbox" name="checkname" id="webdesigner" />
-                <label for="webdesigner"></label>
-                100  <span></span> </li>
+                <input type="checkbox" name="price[]" id=100" value="100" />
+                <label for="price100"></label>
+                100  <span></span>
+              </li>
               <li>
-                <input type="checkbox" name="checkname" id="3dgraphic" />
-                <label for="3dgraphic"></label>
-                200   <span></span> </li>
-            
+                <input type="checkbox" name="price[]" id="200" value="200" />
+                <label for="price200"></label>
+                200   <span></span>
+              </li>
+
             </ul>
             </div>
 
@@ -240,6 +252,6 @@
         </div>
     </div>
 
-
+    </form>
 
 @endsection

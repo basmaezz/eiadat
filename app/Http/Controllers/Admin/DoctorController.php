@@ -25,6 +25,7 @@ class DoctorController extends Controller
     public function index()
     {
         //
+//        $allData = UserWeb::where('type' , 1)->with('cities')->paginate(15);
         $allData = UserWeb::where('type' , 1)->paginate(15);
 //        dd($allData);
         return view('admin.doctor.index')->with('allData', $allData);

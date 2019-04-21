@@ -113,7 +113,7 @@ class CityController extends Controller
     {
        $cityId = $request->cityId;
        $allCity = CityState::where('cityId' , $cityId)->get();
-     //  var_dump($cityId);
+//       var_dump($cityId);
        return  view('admin.city.city')->with([ 'allCity' => $allCity]);
 
     }

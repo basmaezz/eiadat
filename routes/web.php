@@ -1,15 +1,11 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
- */
+
+//Route::get('/test', function (){
+//   $d = \App\UserWeb::find(44);
+//   return $d;
+//});
+
 
 /*==Admin Linkes===================================================*/
 Route::get('/admin', function () {
@@ -184,22 +180,10 @@ Route::group(['namespace' => 'Site'], function () {
 
     Route::post('customsearch','IndexController@customsearch');
 
+    Route::post('/getCity', 'IndexController@getCity')->name('getCity');
+    Route::post('/getSubCity', 'IndexController@getSubCity')->name('getSubCity');
+
     Route::get('drugsearch','DrugsController@search');
 
-
-    Route::get('/usersearch',function($text){
-//        $q = Input::get ( 'q' );
-        $user = \App\User::where('name','LIKE','%'.$text.'%')->get();
-//        $user = \App\User::all();
-
-        if(count($user) > 0)
-        dd($user);
-        else dd('No Details found. Try to search again !');
-    });
-
-
-//    Route::get('/drugsearc',function(){
-// dd('No Details found. Try to search again !');
-//    });
 
 });

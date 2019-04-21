@@ -134,10 +134,6 @@ class UserController extends Controller
 
         $allCity = City::all();
 
-//    return  $docData;
-//        $allCity = City::all();
-//        return  $docData;
-
         return view('site.user.doctorProfile',[
             'editData'=> $editData  ,
             'docData'=>$docData

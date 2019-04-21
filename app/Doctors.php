@@ -44,4 +44,6 @@ class Doctors extends Model
 
 
 
+
+
 }

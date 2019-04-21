@@ -104,7 +104,7 @@
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 " for="name" >اسم المريض</label>
                                                                         <div class="col-md-9">
-                                                                            <input type="text" class="form-control" placeholder="اسم المريض" name="name" id="name" required disabled>
+                                                                            <input type="text" class="form-control" placeholder="اسم المريض" name="name" id="name">
                                                                         </div>
                                                                     </div>
 

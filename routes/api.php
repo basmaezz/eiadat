@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +13,9 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['namespace' => 'API'], function () {
-    
+    Route::get('/search/{SpecialId?}/{cityId?}/{stateId?}/{docname?}', 'SearchController@search');
      Route::resource('cities', 'CityController');
-    
+     Route::get('/citiesindex', 'CityController@index');
+// http://test.com/api/search/SpecialId/cityId/stateId/docname/
     
 });

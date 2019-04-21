@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class rochta extends Model
 {
+
+    protected $with = ['details'];
+    protected $withCount = ['details'];
     protected $table="rochtas";
 
 
@@ -18,7 +21,7 @@ class rochta extends Model
     }
 
     public function details(){
-        return $this->hasmany('App\rochta_detail','rochtaId','id');
+        return $this->hasMany('App\rochta_detail','rochtaId','id');
     }
 
 }

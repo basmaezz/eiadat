@@ -29,7 +29,7 @@
     <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/simple-line-icons/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css" />
 
-    @if($locale =='ar')
+    @if($locale == 'ar')
         <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap/css/bootstrap-rtl.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-switch/css/bootstrap-switch-rtl.min.css')}}" rel="stylesheet" type="text/css" />
     @else
@@ -426,7 +426,7 @@
 <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/scripts/demo.min.js')}}" type="text/javascript"></script>
 <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/global/scripts/quick-sidebar.min.js')}}" type="text/javascript"></script>
 <script src="{{ URL ::to ('assets/admin/'.$locale.'/custom.js')}}" type="text/javascript"></script>
-<script src="{{ URL ::to ('assets/admin/custom.js')}}" type="text/javascript"></script>
+{{--<script src="{{ URL ::to ('assets/admin/custom.js')}}" type="text/javascript"></script>--}}
 
 
 <!--Start of Tawk.to Script-->

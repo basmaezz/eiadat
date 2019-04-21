@@ -13,16 +13,16 @@
                 <form action="{{ action('Site\IndexController@search')}}" method="POST">
                     {{ csrf_field() }}
                     <div class="col-md-3 col-xs-12">
-                        <select class="form-control">
+                        <select name= "SpecialId" class="form-control">
                             <option>اختر التخصص </option>
                             @foreach($allCateory as $cat)
-                                <option>{{ $cat->name }} </option>
+                                <option value="{{ $cat->id }} ">{{ $cat->name }} </option>
                             @endforeach
                         </select>
                     </div>
 
                     <div class="col-md-3 col-xs-12">
-                        <select name="cityId" class="form-control getCity" data-url="{{ action('Admin\CityController@getCity') }}">
+                        <select name="cityId" class="form-control getCity1" data-url="{{ route('getCity') }}">
                             <option>اختر المحافظه </option>
                             @foreach($allCity as $city)
                                 <option value="{{ $city->id }}">{{ $city->city_ar}}</option>
@@ -33,11 +33,10 @@
 
 
                     <div class="col-md-3 col-xs-12">
-                        <select name="stateId" class="form-control getSubCity" id="stateId" data-url="{{ action('Admin\CityController@getSubCity') }}">
+                        <select name="stateId" class="form-control getSubCity" id="stateId" data-url="{{ route('getSubCity') }}">
                             <option>اختر المركز </option>
-                            @foreach($allCityState as $state)
-                                <option value="{{ $state->id }}"> {{ $state->name_ar }}</option>
-                            @endforeach
+
+                            <option> كل المراكز </option>
 
                         </select>
                     </div>
@@ -61,7 +60,7 @@
                         {{--</select>--}}
                     {{--</div>--}}
                     <div class="col-md-2 col-xs-8">
-                        <input type="text" class="form-control" placeholder="اكتب اسم الدكتور" />
+                        <input type="text" class="form-control" name="docname" placeholder="اكتب اسم الدكتور" />
                     </div>
 
                     <div class="col-md-1 col-xs-4">
@@ -100,12 +99,6 @@
                     </li>
                     <!--step 1 end-->
                 @endforeach
-
-
-
-
-
-
 
             </ul>
         </div>

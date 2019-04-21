@@ -11,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
 
 class UserWeb extends Authenticatable {
 
+    protected $with = ['rochta'];
     use Notifiable;
 //    use AuthenticableTrait;
     protected $table = 'users-web';
@@ -59,7 +60,7 @@ class UserWeb extends Authenticatable {
     }
 
     public function rochta(){
-        return $this->hasMany('rochta');
+        return $this->hasMany('\App\rochta', 'patientId', 'id');
     }
 
 //    public function city_id(){
@@ -70,5 +71,22 @@ class UserWeb extends Authenticatable {
 //        return $this->hasOne('App\CityQuarter','id','stateId');
 //    }
 
+
+//     public function cities(){
+//         return $this->belongsToMany('App\City','Doctors','userId', 'countryId');
+//
+//     }
+
+
+    public function cities() {
+        return $this->belongsToMany('App\City','Doctors','userId', 'countryId');
+    }
+
+    public function specialization() {
+        return $this->belongsToMany('App\Cateory','Doctors','specialId', 'userId');
+    }
+//    public function specialization() {
+//        return $this->belongsTo('App\Cateory', 'specialId');
+//    }
 
 }
